@@ -1,6 +1,6 @@
 # Geometric Encoded Medium (GEM)
 
-📄 **[Read the White Paper (PDF)](docs/GEM_White_Paper.pdf)**  
+📄 **[Read the White Paper (PDF)](GEM_White_Paper.pdf)**  
 🔗 https://github.com/troydeville/Geometric-Encoded-Medium
 
 ---
