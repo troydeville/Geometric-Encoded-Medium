@@ -1,27 +1,50 @@
 # Geometric Encoded Medium (GEM)
 
-**GEM** redefines space as an active medium structured with quantized properties.
----
-
-
 ## Repository Structure
 
-- **docs/**: Core theory documents and interpretations.
-- **derivations/**: Detailed mathematical derivations for UQAT expressions.
-- **journal/**: Research notes and ideas.
-- **examples/**: Sample calculations using UQAT principles.
-- **models/**: Simulations.
+- **docs/**  
+  Core documents for the GEM (Geometric Encoded Medium) framework, including the main white paper and supporting reference tables.
+
+- **notebooks/**  
+  Raw and exploratory Mathematica notebooks used to derive, validate, and test GEM predictions. Includes the full development log and symbolic iterations.
+
+- **figures/**  
+  Surface geometry plots, 3D visualizations, and rendered outputs from GEM curvature fields.
+
+- **examples/**  
+  Sample calculations using GEM expressions for particle radii, binding energies, and gravitational scaling.
+
+- **models/**  
+  Planned simulations or computational tools to visualize GEM dynamics at various scales.
+
+---
+
+## 📘 Documents & History
+
+- **GEM White Paper** – A clean, summary-style document introducing the framework, predictions, and core expressions.  
+  [View GEM_White_Paper.pdf](GEM_White_Paper.pdf)
+
+- **GEM 0.1.0 Draft** – The original exploratory document with full derivations and early symbolic structure.  
+  [View GEM_0.1.0_Draft.pdf](docs/GEM_0.1.0_Draft.pdf)
+
+This project is ongoing. The white paper is actively developed from its foundational draft, and new models, simulations, and visualizations will follow.
 
 ---
 
 ## License
+
 **Geometric Encoded Medium (GEM)** is licensed under GPL v3. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-# Disclaimer
+## Disclaimer
+
 **Geometric Encoded Medium (GEM)** is provided "as-is" without any warranty, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. The creators or contributors are not liable for any claim, damages, or other liability arising from the use of UQAT.
 
 ---
+
+## Citation
+
+Troy Shelton Noah Deville. *Geometric Encoded Medium (GEM): A Predictive Vacuum Framework Based on Planck Geometry.* GitHub repository, [https://github.com/troydeville/Geometric-Encoded-Medium](https://github.com/troydeville/Geometric-Encoded-Medium), 2025.
 
 © 2024 Troy Shelton Noah Deville. Licensed under GPL v3.
