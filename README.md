@@ -1,23 +1,5 @@
 # Geometric Encoded Medium (GEM)
 
-## Repository Structure
-
-- **docs/**  
-  Core documents for the GEM (Geometric Encoded Medium) framework, including the main white paper and supporting reference tables.
-
-- **notebooks/**  
-  Raw and exploratory Mathematica notebooks used to derive, validate, and test GEM predictions. Includes the full development log and symbolic iterations.
-
-- **figures/**  
-  Surface geometry plots, 3D visualizations, and rendered outputs from GEM curvature fields.
-
-- **examples/**  
-  Sample calculations using GEM expressions for particle radii, binding energies, and gravitational scaling.
-
-- **models/**  
-  Planned simulations or computational tools to visualize GEM dynamics at various scales.
-
----
 
 ## 📘 Documents & History
 
@@ -28,6 +10,19 @@
   [View GEM_0.1.0_Draft.pdf](docs/GEM_0.1.0_Draft.pdf)
 
 This project is ongoing. The white paper is actively developed from its foundational draft, and new models, simulations, and visualizations will follow.
+
+---
+
+## Repository Structure
+
+- **docs/**  
+  Core documents for the GEM (Geometric Encoded Medium) framework, including the main white paper and supporting reference tables.
+
+- **notebooks/**  
+  Raw and exploratory Mathematica notebooks used to derive, validate, and test GEM predictions. Includes the full development log and symbolic iterations.
+
+- **figures/**  
+  Surface geometry plots, 3D visualizations, and rendered outputs from GEM curvature fields.
 
 ---
 
