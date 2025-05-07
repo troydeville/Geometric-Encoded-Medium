@@ -29,25 +29,6 @@ pub fn load_csv(path: &str) -> anyhow::Result<Vec<Record>> {
 mod tests {
     use super::*;
 
-    // #[test]
-    // fn gem_constants() {
-    //     println!("{} = {:.9e}",  GAMMA.repr, GAMMA.val);
-    //     println!("{}", GAMMA.repr);
-    //     println!("ALPHA_GAMMA {:.9e}", ALPHA_GAMMA.val);
-    //     println!("ALPHA_DELTA {:.9e}", ALPHA_DELTA.val);
-    //     println!("ALPHA {:.9e}", ALPHA.val);
-    //     println!("C {:.9e}", C.val);
-    //     println!("E {:.9e}", E.val);
-    //     println!("H {:.9e}", H.val);
-    //     println!("PHI {:.9e}", PHI.val);
-    //     println!("OMEGA {:.9e}", OMEGA.val);
-    //     println!("{} = {:.9e}", G.repr, G.val);
-    //     println!("{} = {:.9e}", ALPHA_GAMMA.repr, ALPHA_GAMMA.val);
-    //     println!("{} = {:.9e}", ALPHA_DELTA.repr, ALPHA_DELTA.val);
-    //     println!("{} = {:.9e}", ALPHA.repr, ALPHA.val);
-    //     println!("{} = {:.9e}", ME.repr, ME.val);
-    // }
-
     #[test]
     fn bohr_energy_matches_rydberg_n2() {
         
@@ -76,8 +57,13 @@ mod tests {
 
     #[test]
     pub fn get_muonic_lamb_shift() {
-        let result = gem_muonic_lamb_shift();
-        println!("gem_muonic_lamb_shift: {:.9}", result);
+        let result_jouels = gem_muonic_lamb_shift_joules();
+        let result_electron_volts = gem_muonic_lamb_shift_electron_volts();
+        let result_mili_electron_volts = gem_muonic_lamb_shift_mili_electron_volts();
+        println!("gem_muonic_lamb_shift: {:.9e} J", result_jouels);
+        println!("gem_muonic_lamb_shift: {:.9e} eV", result_electron_volts);
+        println!("gem_muonic_lamb_shift: {:.9e} meV", result_mili_electron_volts);
+        println!("");
     }
     
 }
