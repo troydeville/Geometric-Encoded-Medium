@@ -1,20 +1,5 @@
 #![allow(clippy::excessive_precision)]
 
-// use gem::constants as k;
-
-/// CODATA 2022 exact & recommended values
-// pub mod codata {
-//     pub const C:      f64 = 2.997_924_58e8;          // m s⁻¹ (exact)
-//     pub const H:      f64 = 6.626_070_15e-34;        // J s  (exact)
-//     pub const E:      f64 = 1.602_176_634e-19;       // C    (exact)
-//     pub const MU_0:   f64 = 4.0 * std::f64::consts::PI * 1e-7; // H m⁻¹ (exact)
-//     pub const EPS_0:  f64 = 1.0 / (MU_0 * C * C);    // F m⁻¹
-//     pub const ALPHA:  f64 = 7.297_352_5693_571e-3;   // α (2022)
-//     // ─── GEM‑specific ─────────────────────────────
-//     pub const GAMMA:  f64 = 2.566_970_000e-45;       // kg m  (your Γ)
-//     pub const OMEGA:  f64 = 137.2148872226854845674725056999147645813166521821855440478943555;// m⁻¹
-//     pub const PHI:    f64 = 1.0e-7;                  // H m⁻¹ (vacuum Φ)
-// }
 
 use std::f64::consts::PI;
 
@@ -30,8 +15,6 @@ macro_rules! const_def {
         pub const $name: Const = Const { val: $eval, repr: $repr };
     };
 }
-
-
 
 
 const_def!(ALPHA_GAMMA, "αγ = 4580703784999263461548761·π",

@@ -1,2 +1,6 @@
 label,unit,value
 Bohr_E_n2_H,eV,-3.401423282
+Muonic_Lamb_Shift,meV,202.3706
+Electron_Mass,kg,9.1093837015e-31
+Proton_Mass,kg,1.67262192369e-27
+G,m^3/(kg s^2),6.67430e-11
