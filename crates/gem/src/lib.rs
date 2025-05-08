@@ -29,6 +29,13 @@ mod tests {
     use super::*;
 
     #[test]
+    fn gamma_constant() -> anyhow::Result<()> {
+        println!("\nΓ = (α h) / (2π c) = {:.9e}", GAMMA.val);
+        println!();
+        Ok(())
+    }
+
+    #[test]
     fn bohr_energy_matches_rydberg_n2() -> anyhow::Result<()> {
         
         let e = energy_n(ME.val, 2);           // n = 2
