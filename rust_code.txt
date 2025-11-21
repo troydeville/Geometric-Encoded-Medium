@@ -1,0 +1,276 @@
+#![allow(clippy::excessive_precision)]
+
+
+use std::f64::consts::PI;
+
+/// A physical constant with (1) an exact symbolic form and
+/// (2) an already‑evaluated f64 for fast numerics.
+pub struct Const {
+    pub val: f64,            // numeric
+    pub repr: &'static str,  // exact string
+}
+
+macro_rules! const_def {
+    ($name:ident, $repr:expr, $eval:expr) => {
+        pub const $name: Const = Const { val: $eval, repr: $repr };
+    };
+}
+
+
+const_def!(ALPHA_GAMMA, "αγ = 4580703784999263461548761·π",
+    4580703784999263461548761_f64 * PI);
+
+const_def!(ALPHA_DELTA, "αδ = 1972044687500000000000000000",
+1972044687500000000000000000.0);
+
+const_def!(ALPHA, "α = αγ / αδ",
+    ALPHA_GAMMA.val / ALPHA_DELTA.val);
+
+const_def!(C, "c = 299792458 m·s⁻¹", 299792458e0);
+
+
+
+const_def!(E, "e = 1.602176634x10⁻¹⁹ C", 1.602176634e-19);
+
+const_def!(H, "h = 6.62607015x10⁻³⁴ J·s", 662607015e-42);
+
+const_def!(GAMMA, "Γ = (α h) / (2π c)", (ALPHA.val * H.val) / (2.0 * PI * C.val));
+
+const_def!(
+    OMEGA,
+    "Ω = 100·(4π)^(1/8) kg·s m⁻¹ C⁻¹",
+    137.2148872226854845674725056999147645813166521821855440478943555
+);
+
+
+
+const_def!(PHI, "Φ = Γ / e²", 1e-7_f64);
+
+const_def!(G, "G = (4π x Φ)/(Ω x Ω)", (4.0*PI*PHI.val) / (OMEGA.val * OMEGA.val));
+
+const_def!(MP, "mP = Sqrt[( h c)/(2 [Pi] G)]",
+2.176430147259907557993883326292928736158505386632112365867775695e-8);
+
+const_def!(ME, "mₑ = m_P / 23892177732494625341440",
+    MP.val / 23_892_177_732_494_625_341_440_f64);
+    
+
+
+pub fn diff(pred: f64, obs: f64) -> f64 {        // (absolute, relative)
+    let abs = (pred - obs).abs();
+    let rel = abs / obs.abs();
+    rel
+}
+
+
+mod constants;
+mod quantum;
+mod helper;
+
+pub use constants::*;
+pub use quantum::*;
+pub use helper::diff;
+
+use serde::Deserialize;
+
+#[derive(Debug, Deserialize)]
+pub struct Record {
+    pub label: String,
+    pub unit:  String,
+    pub value: f64,
+}
+
+pub fn load_csv(path: &str) -> anyhow::Result<Vec<Record>> {
+    let mut rdr = csv::Reader::from_path(path)?;
+    let mut rows = Vec::new();
+    for rec in rdr.deserialize::<Record>() {
+        rows.push(rec?);
+    }
+    Ok(rows)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn gamma_constant() -> anyhow::Result<()> {
+        println!("\nΓ = (α h) / (2π c) = {:.9e}", GAMMA.val);
+        println!();
+        Ok(())
+    }
+
+    #[test]
+    fn bohr_energy_matches_rydberg_n2() -> anyhow::Result<()> {
+        
+        let e = energy_n(ME.val, 2);           // n = 2
+        let expected = -3.401_423_281_7;       // CODATA eV
+        println!("\nGEM: {:.9e} eV, expected: {:.9e} eV", e, expected);
+        let rel = diff(e, expected);
+        println!("\nrel: {:.9e}\n", rel);
+
+        assert!(rel < 1e-8, "rel err = {rel:e}");   // 10 ppb margin
+
+        Ok(())
+    }
+
+    #[test]
+    fn compare_all_observed() -> anyhow::Result<()> {
+        let rows = load_csv("../data/observed.csv")?;
+        println!("");
+        println!("|\t   label   \t|\tpred\t\t|\t    obs    \t|\terror%      |   σ    |");
+        println!("======================================================================================================");
+        for r in rows {
+            
+            if (r.label.as_str() == "Bohr_E_n2_H") {
+                let pred: f64 = energy_n(ME.val, 2);
+                let rel = diff(pred, r.value);
+                // println!("{}: rel: {:.9e}", r.label, rel);
+                println!("|\t{}\t|  {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("------------------------------------------------------------------------------------------------------");
+                assert!(rel < 1e-6, "{} rel_err={rel:e}", r.label);
+            }
+            
+            else if (r.label.as_str() == "Muonic_Lamb_Shift") {
+                let pred: f64 = gem_muonic_lamb_shift_mili_electron_volts();
+                let rel = diff(pred, r.value);
+                println!("|   {}   |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("------------------------------------------------------------------------------------------------------");
+                assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
+            }
+
+            else if (r.label.as_str() == "Electron_Mass") {
+                let pred: f64 = MP.val / 23892177732494625341440.0;
+                let rel = diff(pred, r.value);
+                println!("|     {}     |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("------------------------------------------------------------------------------------------------------");
+                assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
+            }
+
+            else if (r.label.as_str() == "Proton_Mass") {
+                let pred: f64 = MP.val / 130121e14;
+                let rel = diff(pred, r.value);
+                println!("|     {}     |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("------------------------------------------------------------------------------------------------------");
+                assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
+            }
+
+            else if (r.label.as_str() == "G") { 
+                let pred: f64 = G.val;
+                let rel = diff(pred, r.value);
+                println!("|\t     {}     \t|   {:.9e} \t| {:.9e} \t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("------------------------------------------------------------------------------------------------------");
+                assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
+            }
+        }
+        
+        Ok(())
+    }
+
+    #[test]
+    pub fn get_muonic_lamb_shift() -> anyhow::Result<()> {
+        let result_jouels = gem_muonic_lamb_shift_joules();
+        let result_electron_volts = gem_muonic_lamb_shift_electron_volts();
+        let result_mili_electron_volts = gem_muonic_lamb_shift_mili_electron_volts();
+        println!("gem_muonic_lamb_shift: {:.9e} J", result_jouels);
+        println!("gem_muonic_lamb_shift: {:.9e} eV", result_electron_volts);
+        println!("gem_muonic_lamb_shift: {:.9e} meV", result_mili_electron_volts);
+        println!("");
+
+        Ok(())
+    }
+    
+}
+
+
+// use std::f64::consts::PI;
+
+use crate::constants::*;
+
+// pub fn lambda_alpha(n: f64) -> f64 {
+//     let ag = ALPHA_GAMMA.val;
+//     let ad = ALPHA_DELTA.val;
+//     (ad * n) / ((ag + 2.0 * ad * n * n)
+// }
+
+pub fn r_n(n: f64, mass: f64) -> f64 {
+    GAMMA.val * n * n / (ALPHA.val * ALPHA.val * mass)
+}
+
+pub fn energy_n(mass: f64, n: u32) -> f64 {
+    // − (α² c² m) / (2 n²)  [J] → eV
+    let n = n as f64;
+    let joule = -ALPHA.val * ALPHA.val * C.val * C.val * mass / (2.0 * n * n);
+    joule / 1.602_176_634e-19
+}
+
+pub fn energy_zn(mass: f64, n: u32, z: u32) -> f64 {
+    let z = z as f64;
+    energy_n(mass, n) * z * z
+}
+
+pub fn gem_muonic_lamb_shift_joules() -> f64 {
+    let mu = 1.883531628e-28; // mass of muon
+    let delta: f64 = ALPHA.val * mu * C.val.powf(2.0) * lambda_alpha(1904977.0);
+    delta
+}
+
+pub fn gem_muonic_lamb_shift_electron_volts() -> f64 {
+    let mu = 1.883531628e-28; // mass of muon
+    
+    let delta: f64 = ALPHA.val * mu * C.val.powf(2.0) * lambda_alpha(1904977.0);
+    delta / 1.602176634e-19
+}
+// 1904986
+pub fn gem_muonic_lamb_shift_mili_electron_volts() -> f64 {
+    let mu = 1.883531628e-28; // mass of muon
+    let delta: f64 = ALPHA.val * mu * C.val.powf(2.0) * lambda_alpha(1904977.0);
+    delta / 1.602176634e-19 * 1000.0
+}
+
+pub fn lambda_alpha(n: f64) -> f64 {
+    (ALPHA_DELTA.val * n) / ((2.0*ALPHA_DELTA.val*n.powf(2.0))+ALPHA_GAMMA.val)
+}
+
+
+// RESULTS
+running 4 tests
+test tests::gamma_constant ... ok
+test tests::get_muonic_lamb_shift ... ok
+test tests::bohr_energy_matches_rydberg_n2 ... ok
+test tests::compare_all_observed ... ok
+
+successes:
+
+---- tests::gamma_constant stdout ----
+
+Γ = (α h) / (2π c) = 2.566969967e-45
+
+
+---- tests::get_muonic_lamb_shift stdout ----
+gem_muonic_lamb_shift: 3.242350199e-20 J
+gem_muonic_lamb_shift: 2.023715819e-1 eV
+gem_muonic_lamb_shift: 2.023715819e2 meV
+
+
+---- tests::bohr_energy_matches_rydberg_n2 stdout ----
+
+GEM: -3.401423282e0 eV, expected: -3.401423282e0 eV
+
+rel: 1.528999103e-11
+
+
+---- tests::compare_all_observed stdout ----
+
+|          label        |       pred            |           obs         |      error%      |   σ    |
+======================================================================================================
+|       Bohr_E_n2_H     |  -3.401423282e0       |       -3.401423282e0  |  1.034883715e-8   |  0.00  |
+------------------------------------------------------------------------------------------------------
+|   Muonic_Lamb_Shift   |   2.023715819e2       |       2.023706000e2   |  4.851916632e-4   |  0.39  |
+------------------------------------------------------------------------------------------------------
+|     Electron_Mass     |   9.109383714e-31     |       9.109383702e-31 |  1.361233584e-7   |  0.00  |
+------------------------------------------------------------------------------------------------------
+|     Proton_Mass     |   1.672620213e-27       |       1.672621924e-27 |  1.022804469e-4   |  0.00  |
+------------------------------------------------------------------------------------------------------
+|            G          |   6.674325732e-11     | 6.674300000e-11       |  3.855361073e-4   |  0.00  |
+------------------------------------------------------------------------------------------------------

@@ -1,0 +1,208 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX template for GEM Paper submission to arXiv
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+% Preamble: Load necessary packages
+\usepackage[margin=1in]{geometry} % For setting page margins
+\usepackage{amsmath}              % For advanced math environments
+\usepackage{graphicx}             % For including images (if any)
+\usepackage{hyperref}             % For clickable links
+\usepackage{times}                % Use Times font for a classic look
+\usepackage{authblk}              % For author affiliations
+
+% Title and Author Information
+\title{\textbf{Geometric Encoded Medium (GEM): A Predictive Vacuum Framework Based on Planck Geometry}}
+\author[1]{Troy Shelton}
+\author[1]{Noah Deville}
+\affil[1]{Independent Researcher, Pine Prairie, LA}
+\date{August 2, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper introduces the Geometric Encoded Medium (GEM), a theoretical framework wherein the vacuum is modeled as a structured, bound medium. Within this framework, all physical phenomena, including fundamental constants, forces, and particle properties, are posited to emerge from geometric resonances at the Planck scale. By defining a set of geometric structural constants for the vacuum, GEM provides a purely algebraic method for deriving key physical quantities. We demonstrate the derivation of the fine-structure constant ($\alpha$) and the gravitational constant ($G$) from these first principles. The framework's predictive power is validated by calculating the characteristic radii and binding energy spectra for fundamental particles, as well as gravitational accelerations for astronomical bodies. These theoretical predictions show a high degree of concordance with established CODATA values, suggesting that the properties of the universe may be encoded in the geometry of the vacuum itself. A computational model in Mathematica, provided in the appendix, verifies the internal consistency and results of the framework.
+\end{abstract}
+
+\section{Introduction}
+
+The search for a unified description of the physical world remains a central challenge in modern physics. While the Standard Model of particle physics and the theory of General Relativity are remarkably successful in their respective domains, they rely on a set of fundamental constants whose origins remain unexplained. The fine-structure constant ($\alpha$), for instance, is measured with extraordinary precision, yet its value is not derived from any underlying theory. Similarly, the gravitational constant ($G$) is a foundational element of cosmology but is not predicted by the Standard Model.
+
+Various theoretical programs, from string theory to loop quantum gravity, have sought to provide a more fundamental basis for these constants, often proposing complex higher-dimensional geometries or quantized spacetime structures. The Geometric Encoded Medium (GEM) framework offers an alternative approach, grounded in the idea that the vacuum is not an empty void but a structured medium with intrinsic geometric properties.
+
+Inspired by the work of Nikola Tesla, GEM is built on the axiom that all physical action is a form of geometric resonance. This paper presents a purely algebraic framework that arises from this principle. We posit that the fundamental constants of nature are not arbitrary but are necessary consequences of the vacuum's geometry. By defining a small set of structural constants for this medium, we derive expressions for $\alpha$, $G$, and other physical quantities. The validity of this framework is tested by its ability to predict a wide range of observable phenomena, from the Bohr radius of the electron to the surface gravity of the Earth, with high precision.
+
+\section{The Geometric Encoded Medium Framework}
+
+\subsection{Core Principles}
+
+The GEM framework is founded on three core principles:
+\begin{enumerate}
+    \item \textbf{Resonance is Action:} All physical action is a manifestation of geometric resonance.
+    \item \textbf{All Action is Geometric:} All interactions and properties of particles are encoded in the geometry of the vacuum.
+    \item \textbf{The Vacuum is a Structured Medium:} The vacuum possesses intrinsic properties that can be described by a set of structural constants.
+\end{enumerate}
+
+\subsection{Foundational Constants}
+
+The framework utilizes established empirical constants as a baseline and introduces two new structural constants to define the vacuum's geometry.
+
+\subsubsection{Empirical Constants (CODATA)}
+\begin{itemize}
+    \item Speed of light, $c = 299792458 \, \text{m/s}$
+    \item Elementary charge, $e = 1.602176634 \times 10^{-19} \, \text{C}$
+    \item Planck constant, $h = 6.62607015 \times 10^{-34} \, \text{J/Hz}$
+\end{itemize}
+
+\subsubsection{GEM Structural Constants}
+\begin{itemize}
+    \item Vacuum Permeability Scalar, $\Phi = 1 \times 10^{-7} \, \text{H/m}$
+    \item Vacuum Impedance Scalar, $\Omega = 100\sqrt[8]{4\pi} \, \left[\frac{\text{kg} \cdot \text{s}}{\text{m} \cdot \text{C}}\right]$
+\end{itemize}
+
+\subsection{Derivation of Core Theoretical Quantities}
+
+From these foundational constants, we derive all other physical quantities algebraically.
+
+\paragraph{Fine-Structure Constant ($\alpha$):} The fine-structure constant is proposed to be a rational number derived from two large integer parameters, $\gamma$ and $\delta$, which represent fundamental geometric aspects of the medium.
+\begin{equation}
+\alpha = \frac{\gamma}{\delta} = \frac{4580703784999263461548761 \pi}{1972044687500000000000000000}
+\end{equation}
+
+\paragraph{Gravitational Constant ($G$):} The gravitational constant is derived from the vacuum's structural properties:
+\begin{equation}
+G = \frac{4\pi\Phi}{\Omega^{2}}
+\end{equation}
+
+\paragraph{Geometric Coupling Constant ($\Gamma_o$):} This constant unifies electromagnetism and Planck-scale geometry:
+\begin{equation}
+\Gamma_o = e^2 \Phi = \alpha m_P l_P
+\end{equation}
+where $m_P$ and $l_P$ are the Planck mass and Planck length, respectively, derived using the GEM value for $G$.
+
+\subsection{The Geometric Scaling Function $\Lambda_\alpha(n)$}
+
+A central element of the GEM framework is the discovery of a scaling function, $\Lambda_\alpha(n)$, which connects the Planck scale to the scale of any particle. This function arises from the fundamental resonance condition of the medium:
+\begin{equation}
+\frac{M}{\Gamma_o} \left(R - \frac{2GM}{c^2}\right) = 1
+\end{equation}
+The function takes a particle's mass as a ratio to the Planck mass, $n = M/m_P$, and provides the scaling factor needed to determine its characteristic radii (e.g., classical radius, Compton wavelength, Bohr radius):
+\begin{equation}
+\Lambda_\alpha(n) = \frac{\delta n}{2\delta n^2 + \gamma}
+\end{equation}
+This function allows for the direct calculation of particle properties from their mass.
+
+\section{Computational Validation and Results}
+
+The algebraic relationships proposed by the GEM framework have been implemented and verified in a Mathematica notebook (see Appendix). The notebook confirms the internal consistency of the framework and generates the predictive results presented below.
+
+\subsection{Derived Constants vs. CODATA Values}
+
+The values for $\alpha$ and $G$ derived from the GEM framework show remarkable agreement with the experimentally determined CODATA values.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Quantity} & \textbf{GEM Derived Value} & \textbf{CODATA 2022 Value} & \textbf{Relative Error} \\
+\hline
+$\alpha$ & 0.0072973525653 & 0.0072973525693 & $5.5 \times 10^{-11}$ \\
+$G$ (m³/kg·s²) & $6.67433 \times 10^{-11}$ & $6.67430 \times 10^{-11}$ & $4.5 \times 10^{-6}$ \\
+\hline
+\end{tabular}
+\caption{Comparison of GEM-derived constants with CODATA values.}
+\label{tab:constants}
+\end{table}
+
+\subsection{Particle Radii}
+
+Using the electron's mass, the $\Lambda_\alpha(n)$ function is used to calculate its characteristic radii.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Radius Type} & \textbf{GEM Prediction (m)} & \textbf{Observed Value (m)} \\
+\hline
+Classical Radius & $2.81794 \times 10^{-15}$ & $2.81794 \times 10^{-15}$ \\
+Compton Wavelength & $2.42631 \times 10^{-12}$ & $2.42631 \times 10^{-12}$ \\
+Bohr Radius & $5.29177 \times 10^{-11}$ & $5.29177 \times 10^{-11}$ \\
+\hline
+\end{tabular}
+\caption{Predicted vs. Observed radii for the electron.}
+\label{tab:radii}
+\end{table}
+
+\subsection{Particle Binding Energies}
+
+The GEM framework predicts the binding energy spectra for various particles using a modified Rydberg formula: $E_n = -\left(\frac{Z^2 \alpha^2}{2n^2}\right) m c^2$. The results for the first five energy levels are shown below.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+\textbf{Particle} & \textbf{Level 1 (eV)} & \textbf{Level 2 (eV)} & \textbf{Level 3 (eV)} & \textbf{Level 4 (eV)} & \textbf{Level 5 (eV)} \\
+\hline
+Hydrogen & -13.606 & -3.401 & -1.512 & -0.850 & -0.544 \\
+Muon & -2813.23 & -703.31 & -312.58 & -175.83 & -112.53 \\
+Proton & -24982.13 & -6245.53 & -2775.79 & -1561.38 & -999.29 \\
+\hline
+\end{tabular}
+\caption{Predicted binding energies for Hydrogen, Muon, and Proton.}
+\label{tab:binding}
+\end{table}
+
+\subsection{Gravitational Scaling}
+
+The framework successfully scales gravitational effects to astronomical objects. The calculated surface gravity for Earth, the Sun, and a typical neutron star are shown below.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Object} & \textbf{GEM Prediction (m/s²)} & \textbf{Observed Value (m/s²)} \\
+\hline
+Earth & 9.82034 & 9.81 (mean) \\
+Sun & 274.201 & $\sim$274 \\
+Neutron Star & $2.086 \times 10^{12}$ & Theoretical ($1-3 \times 10^{12}$) \\
+\hline
+\end{tabular}
+\caption{Predicted vs. Observed surface gravity for astronomical objects.}
+\label{tab:gravity}
+\end{table}
+
+\section{Discussion}
+
+The results presented demonstrate that the GEM framework, built on a small set of geometric principles, can derive fundamental constants and predict a wide range of physical phenomena with high accuracy. The ability to derive the fine-structure constant from a rational expression is a significant departure from the Standard Model, suggesting a deterministic geometric origin for what is considered an empirical value.
+
+Furthermore, the model's success in calculating particle radii and binding energies through the $\Lambda_\alpha(n)$ scaling function implies a deep connection between the Planck scale and the quantum world. The framework suggests that particle properties are not arbitrary but are quantized resonances within the vacuum medium, governed by a universal scaling law.
+
+The extension of the framework to gravitational phenomena is particularly noteworthy. By treating gravity as an emergent property of the vacuum's geometry, GEM provides a calculation for surface gravity that aligns with observation for objects as diverse as planets, stars, and neutron stars. This offers a potential bridge between quantum-scale and cosmological-scale physics.
+
+The discovery of the scaling symmetry, where the resonance function $\Sigma$ is shown to be directly proportional to mass, reinforces the internal consistency of the model. It suggests that the geometric principles underlying the framework are robust and mathematically coherent.
+
+While the results are compelling, the GEM framework is still in its early stages. Future work will focus on extending the model to explain the full spectrum of particles in the Standard Model, addressing phenomena such as dark matter and dark energy, and exploring the potential for new, testable predictions.
+
+\section{Conclusion}
+
+The Geometric Encoded Medium framework offers a novel and intuitive path toward a unified understanding of physics. By modeling the vacuum as a structured, resonant medium, GEM provides a purely algebraic basis for deriving fundamental constants and predicting physical phenomena across vast scales. The high degree of accuracy of its predictions, verified by the computational model presented in the appendix, suggests that the geometry of the vacuum may indeed be the source code of the universe. This work is presented to encourage further investigation and testing of this promising new framework.
+
+% --- References Section ---
+% You will need to add your citations here in the standard BibTeX or \bibitem format.
+% Example: \bibitem{label} Author, A., Title, Journal, Year.
+\begin{thebibliography}{9}
+    \bibitem{codata2022}
+    E. Tiesinga, P.J. Mohr, D.B. Newell, and B.N. Taylor (2024), "CODATA Recommended Values of the Fundamental Physical Constants: 2022". To be published. National Institute of Standards and Technology, Gaithersburg, MD.
+    
+    % Add other references here
+    
+\end{thebibliography}
+
+\appendix
+\section{Appendix: Mathematica Notebook}
+The complete computational implementation of the GEM framework is provided in the accompanying Mathematica notebook, which serves as a reproducible validation of the results presented in this paper.
+
+\end{document}

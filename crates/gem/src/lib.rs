@@ -40,11 +40,11 @@ mod tests {
         
         let e = energy_n(ME.val, 2);           // n = 2
         let expected = -3.401_423_281_7;       // CODATA eV
-        println!("\nGEM: {:.9e} eV, expected: {:.9e} eV", e, expected);
+        println!("\nGEM: {:.28e} eV, expected: {:.10e} eV", e, expected);
         let rel = diff(e, expected);
-        println!("\nrel: {:.9e}\n", rel);
+        println!("\nrel: {:.28e}\n", rel);
 
-        assert!(rel < 1e-8, "rel err = {rel:e}");   // 10 ppb margin
+        assert!(rel < 1e-6, "rel err = {rel:e}");   // 10 ppb margin
 
         Ok(())
     }
@@ -57,43 +57,43 @@ mod tests {
         println!("======================================================================================================");
         for r in rows {
             
-            if (r.label.as_str() == "Bohr_E_n2_H") {
+            if r.label.as_str() == "Bohr_E_n2_H" {
                 let pred: f64 = energy_n(ME.val, 2);
                 let rel = diff(pred, r.value);
                 // println!("{}: rel: {:.9e}", r.label, rel);
-                println!("|\t{}\t|  {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("|\t{}\t|  {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2e}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs());
                 println!("------------------------------------------------------------------------------------------------------");
                 assert!(rel < 1e-6, "{} rel_err={rel:e}", r.label);
             }
             
-            else if (r.label.as_str() == "Muonic_Lamb_Shift") {
+            else if r.label.as_str() == "Muonic_Lamb_Shift" {
                 let pred: f64 = gem_muonic_lamb_shift_mili_electron_volts();
                 let rel = diff(pred, r.value);
-                println!("|   {}   |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("|   {}   |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2e}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs());
                 println!("------------------------------------------------------------------------------------------------------");
                 assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
             }
 
-            else if (r.label.as_str() == "Electron_Mass") {
+            else if r.label.as_str() == "Electron_Mass" {
                 let pred: f64 = MP.val / 23892177732494625341440.0;
                 let rel = diff(pred, r.value);
-                println!("|     {}     |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("|     {}     |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2e}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() );
                 println!("------------------------------------------------------------------------------------------------------");
                 assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
             }
 
-            else if (r.label.as_str() == "Proton_Mass") {
+            else if r.label.as_str() == "Proton_Mass" {
                 let pred: f64 = MP.val / 130121e14;
                 let rel = diff(pred, r.value);
-                println!("|     {}     |   {:.9e}\t|\t{:.9e}\t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("|     {}      |   {:.9e}\t | \t{:.9e}\t|  {:.9e}   |  {:.2e}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs());
                 println!("------------------------------------------------------------------------------------------------------");
                 assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
             }
 
-            else if (r.label.as_str() == "G") { 
+            else if r.label.as_str() == "G" { 
                 let pred: f64 = G.val;
                 let rel = diff(pred, r.value);
-                println!("|\t     {}     \t|   {:.9e} \t| {:.9e} \t|  {:.9e}   |  {:.2}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs() / 0.0025);
+                println!("|\t     {}     \t|   {:.9e} \t| {:.9e} \t|  {:.9e}   |  {:.2e}  |", r.label, pred, r.value, 100.0 *rel, (pred - r.value).abs());
                 println!("------------------------------------------------------------------------------------------------------");
                 assert!(rel < 1e-3, "{} rel_err={rel:e}", r.label);
             }

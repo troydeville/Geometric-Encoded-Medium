@@ -38,9 +38,9 @@ pub fn gem_muonic_lamb_shift_electron_volts() -> f64 {
 }
 // 1904986
 pub fn gem_muonic_lamb_shift_mili_electron_volts() -> f64 {
-    let mu = 1.883531628e-28; // mass of muon
+    let mu = 1.883531628e-28; // mass of muon CODATA 2022
     let delta: f64 = ALPHA.val * mu * C.val.powf(2.0) * lambda_alpha(1904977.0);
-    delta / 1.602176634e-19 * 1000.0
+    delta / E.val * 1000.0
 }
 
 pub fn lambda_alpha(n: f64) -> f64 {
