@@ -21,3 +21,10 @@ Cargo.lock
 #.idea/
 
 # UQAT Misc
+
+gem_engine/gem/lib
+gem_engine/gem/share
+gem_engine/gem/target
+gem_engine/gem/bin
+gem_engine/gem/include
+gem_engine/gem/*.cfg
