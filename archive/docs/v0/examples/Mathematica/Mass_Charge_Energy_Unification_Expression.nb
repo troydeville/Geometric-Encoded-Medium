@@ -1,0 +1,387 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     14542,        379]
+NotebookOptionsPosition[     12928,        345]
+NotebookOutlinePosition[     13390,        363]
+CellTagsIndexPosition[     13347,        360]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["One example of how Earth creates disturbances in the Aether:", "Text",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.940074212561428*^9, 3.9400742258270054`*^9}, {
+  3.9400791400624657`*^9, 
+  3.9400791974299736`*^9}},ExpressionUUID->"0c6e24ad-13cd-f04a-883a-\
+2a16e3c50066"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Clear", "[", 
+    RowBox[{"M", ",", " ", "R", ",", " ", "Q"}], "]"}], ";"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{"UQAT", " ", "Derrived"}], "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"\[CapitalPsi]", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{
+     FractionBox["149896229", "\[Pi]"], ",", " ", "\"\<Hertz\>\""}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[CapitalGamma]", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{"1", ",", " ", "\"\<Meters\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[CapitalPhi]", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{
+     FractionBox["10000000", "\[Pi]"], ",", " ", 
+     FractionBox["\"\<Meters\>\"", "\"\<Henries\>\""]}], " ", "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Alpha]G", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{
+     FractionBox["\[Pi]", "4707"], ",", " ", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["\"\<Hertz\>\"", "2"], " ", 
+       SuperscriptBox["\"\<Coulombs\>\"", "2"], " ", 
+       SuperscriptBox["\"\<Meters\>\"", "2"]}], 
+      SuperscriptBox["\"\<Kilograms\>\"", "2"]]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"e", "=", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{
+     RowBox[{"1", "/", "6241509074460762112"}], ",", "\"\<Coulombs\>\""}], 
+    "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Mu]o", "=", 
+   FractionBox["4", "\[CapitalPhi]"]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Epsilon]o", "=", 
+   RowBox[{"UnitConvert", "[", 
+    RowBox[{
+     FractionBox["\[CapitalPhi]", 
+      RowBox[{"4", " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"2", "\[Pi]", " ", "\[CapitalPsi]", " ", "\[CapitalGamma]"}],
+          ")"}], "2"]}]], ",", " ", 
+     RowBox[{"\"\<Farads\>\"", " ", "/", " ", "\"\<Meters\>\""}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{"\[Tau]", "=", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["e", "2"], "\[Mu]o"}], 
+   RowBox[{"4", "\[Pi]"}]]}], "\n", 
+ RowBox[{
+  RowBox[{"\[Tau]", "=", 
+   FractionBox[
+    SuperscriptBox["e", "2"], 
+    RowBox[{"4", "\[Pi]", " ", "\[Epsilon]o", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["1", 
+        SqrtBox[
+         RowBox[{"\[Mu]o", " ", "\[Epsilon]o"}]]], ")"}], "2"]}]]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"c", "=", 
+    RowBox[{"UnitConvert", "[", 
+     RowBox[{
+      RowBox[{"e", 
+       SqrtBox[
+        RowBox[{
+         FractionBox["1", 
+          RowBox[{"4", "\[Pi]", " ", "\[Epsilon]o"}]], 
+         FractionBox["1", "\[Tau]"]}]]}], ",", " ", 
+      RowBox[{"\"\<Meters\>\"", " ", "/", " ", "\"\<Seconds\>\""}]}], "]"}]}],
+    ";"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+      "**", "**"}], "*"}], " ", "*)"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Q\[Tau]", "[", 
+    RowBox[{"M_", ",", " ", "R_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"UnitConvert", "[", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{"4", "\[Pi]", " ", "\[Epsilon]o", " ", 
+       SuperscriptBox["c", "2"], " ", "M", " ", "R"}]], ",", " ", 
+     "\"\<Coulombs\>\""}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", 
+     RowBox[{"M_", ",", " ", "R_"}], "]"}], ":=", 
+    RowBox[{"UnitConvert", "[", 
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        SuperscriptBox["M", "2"], 
+        RowBox[{"R", " ", 
+         SuperscriptBox[
+          RowBox[{"Q\[Tau]", "[", 
+           RowBox[{"M", ",", " ", "R"}], "]"}], "2"]}]], "\[Alpha]G"}], ",", 
+      " ", 
+      RowBox[{"\"\<Meters\>\"", " ", "/", " ", 
+       SuperscriptBox["\"\<Seconds\>\"", "2"]}]}], "]"}]}], ";"}], "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Earth", " ", "properties"}], " ", "*)"}]}], "\n", 
+ RowBox[{"massOfEarth", " ", "=", " ", 
+  RowBox[{"Quantity", "[", 
+   RowBox[{"5972200000000000000000000", ",", " ", "\"\<Kilograms\>\""}], 
+   "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"radiusOfEarth", " ", "=", " ", 
+   RowBox[{"Quantity", "[", 
+    RowBox[{"6378100", ",", " ", "\"\<Meters\>\""}], "]"}]}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"aEarth", " ", "=", " ", 
+    RowBox[{"a", "[", 
+     RowBox[{"massOfEarth", ",", " ", "radiusOfEarth"}], "]"}]}], ";"}], "\n",
+   "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<Acceleration: \>\"", ",", " ", 
+    RowBox[{"SetPrecision", "[", 
+     RowBox[{"aEarth", ",", " ", "11"}], "]"}]}], "]"}], ";"}]}], "Code",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{{3.940074189775318*^9, 3.940074243749281*^9}, {
+  3.940078262846281*^9, 3.940078312417612*^9}, {3.9400784106000004`*^9, 
+  3.940078421998169*^9}, {3.9400784757933846`*^9, 3.9400786633089676`*^9}, {
+  3.9400787006931343`*^9, 3.940079079335146*^9}, {3.9400792074528885`*^9, 
+  3.940079254957733*^9}, {3.9400793597056007`*^9, 3.9400795024007835`*^9}, {
+  3.9400820080357094`*^9, 3.9400820162819557`*^9}, {3.9400845628256073`*^9, 
+  3.9400845679534035`*^9}, {3.940085666882084*^9, 3.940085667287716*^9}, {
+  3.940091832712879*^9, 3.9400918848009415`*^9}, {3.940091959807955*^9, 
+  3.9400919672854156`*^9}, {3.9400920155376167`*^9, 3.9400920250525913`*^9}},
+ CellLabel->
+  "In[124]:=",ExpressionUUID->"bd3b1e8b-3bbe-fd4b-bab2-e5a00481dc72"],
+
+Cell[BoxData[
+ TemplateBox[{
+   FractionBox["1", "389564355265760392822191102998547005440000000"], 
+   RowBox[{
+     SuperscriptBox["\"C\"", "2"], "\[InvisibleSpace]", "\"H\"", 
+     "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", "\"m\""}], 
+   "coulomb squared henries per meter", 
+   FractionBox[
+    RowBox[{
+      SuperscriptBox["\"Coulombs\"", "2"], " ", "\"Henries\""}], 
+    "\"Meters\""]},
+  "Quantity"]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{
+  3.9400856692996807`*^9, {3.940090835734049*^9, 3.9400908360874825`*^9}, {
+   3.9400915788454056`*^9, 3.9400915830848427`*^9}, 3.940091835322668*^9, {
+   3.940091960811569*^9, 3.940091967695591*^9}, 3.940094117649908*^9},
+ CellLabel->
+  "Out[132]=",ExpressionUUID->"c5e3b697-bbd2-cb40-b1bd-0b773fd564af"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "5972200000000000000000000", "\"kg\"", "kilograms", "\"Kilograms\""},
+  "Quantity"]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{
+  3.9400856692996807`*^9, {3.940090835734049*^9, 3.9400908360874825`*^9}, {
+   3.9400915788454056`*^9, 3.9400915830848427`*^9}, 3.940091835322668*^9, {
+   3.940091960811569*^9, 3.940091967695591*^9}, 3.9400941176792793`*^9},
+ CellLabel->
+  "Out[137]=",ExpressionUUID->"724da3d8-d967-074a-bb2e-68a06d067110"],
+
+Cell[BoxData[
+ TemplateBox[{"6378100", "\"m\"", "meters", "\"Meters\""},
+  "Quantity"]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+ CellChangeTimes->{
+  3.9400856692996807`*^9, {3.940090835734049*^9, 3.9400908360874825`*^9}, {
+   3.9400915788454056`*^9, 3.9400915830848427`*^9}, 3.940091835322668*^9, {
+   3.940091960811569*^9, 3.940091967695591*^9}, 3.9400941177020245`*^9},
+ CellLabel->
+  "Out[138]=",ExpressionUUID->"05cc9bbf-260c-1941-ae4a-dc68513dd500"]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Acceleration: \"\>", "\[InvisibleSpace]", 
+   TemplateBox[{"9.79844974062008007712342377451946168236`10.698970004336019", 
+     RowBox[{"\"m\"", "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", 
+       SuperscriptBox["\"s\"", "2"]}], "meters per second squared", 
+     FractionBox["\"Meters\"", 
+      SuperscriptBox["\"Seconds\"", "2"]]},
+    "Quantity"]}],
+  SequenceForm["Acceleration: ", 
+   Quantity[
+   9.79844974062008007712342377451946168236`10.698970004336019, "Meters" 
+    "Seconds"^(-2)]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.9400790613750725`*^9, 3.9400791141537914`*^9}, 
+   3.9400792204935303`*^9, 3.9400792569592857`*^9, {3.94007933534791*^9, 
+   3.940079335436344*^9}, {3.940079400180977*^9, 3.9400794341615047`*^9}, 
+   3.940079506516117*^9, {3.940081938319481*^9, 3.940081938411831*^9}, 
+   3.9400820176487255`*^9, {3.94008456976577*^9, 3.94008457975403*^9}, {
+   3.9400852305286503`*^9, 3.9400852306324577`*^9}, 3.940085669355076*^9, {
+   3.94009083577866*^9, 3.940090836137644*^9}, {3.9400915788957424`*^9, 
+   3.9400915831320934`*^9}, 3.9400918353608875`*^9, {3.9400919609206066`*^9, 
+   3.9400919677659073`*^9}, 3.94009411772287*^9},
+ CellLabel->
+  "During evaluation of \
+In[124]:=",ExpressionUUID->"81d3f31a-137d-d641-93c0-f2d805ba9023"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ FractionBox[
+  SuperscriptBox["e", "2"], 
+  RowBox[{
+  "4", "\[Pi]", " ", "\[Epsilon]o", " ", "\[Tau]"}]], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{
+   "\"\<\[Tau] = \!\(\*FractionBox[\(\*SuperscriptBox[\(e\), \(2\)] \
+\*SubscriptBox[\(\[Mu]\), \(o\)]\), \(4  \[Pi]\)]\) = \>\"", ",", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["e", "2"], " ", "\[Mu]o"}], 
+     RowBox[{"4", " ", "\[Pi]"}]]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.940090850640152*^9, 3.9400908573048744`*^9}, {
+  3.9400915870599327`*^9, 3.940091587362667*^9}, {3.9400917458451023`*^9, 
+  3.9400918062119846`*^9}, {3.940091862714052*^9, 3.940091881718525*^9}, {
+  3.9400920374628506`*^9, 3.940092084646019*^9}},
+ CellLabel->
+  "In[141]:=",ExpressionUUID->"34f6c6e4-54a4-ec49-9b5d-489e1da0be78"],
+
+Cell[BoxData[
+ TemplateBox[{"89875517873681764", 
+   RowBox[{
+     SuperscriptBox["\"m\"", "2"], "\[NegativeMediumSpace]", "\"/(\"", 
+     "\[InvisibleSpace]", "\"F\"", "\[ThinSpace]", "\"H\"", 
+     "\[InvisibleSpace]", "\")\""}], "meters squared per farad henry", 
+   FractionBox[
+    SuperscriptBox["\"Meters\"", "2"], 
+    RowBox[{"\"Farads\"", " ", "\"Henries\""}]]},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.9400915831789207`*^9, 3.940091587561079*^9}, {
+   3.9400917742848606`*^9, 3.940091797963621*^9}, 3.9400918765198574`*^9, 
+   3.940092087399151*^9, 3.940094117801096*^9},
+ CellLabel->
+  "Out[141]=",ExpressionUUID->"da6a9b2f-d84f-9748-9af5-2df96a24e3a8"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\[Tau] = \\!\\(\\*FractionBox[\\(\\*SuperscriptBox[\\(e\\), \
+\\(2\\)] \\*SubscriptBox[\\(\[Mu]\\), \\(o\\)]\\), \\(4  \[Pi]\\)]\\) = \"\>",
+    "\[InvisibleSpace]", 
+   TemplateBox[{
+     FractionBox["1", "389564355265760392822191102998547005440000000"], 
+     RowBox[{
+       SuperscriptBox["\"C\"", "2"], "\[InvisibleSpace]", "\"H\"", 
+       "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", "\"m\""}], 
+     "coulomb squared henries per meter", 
+     FractionBox[
+      RowBox[{
+        SuperscriptBox["\"Coulombs\"", "2"], " ", "\"Henries\""}], 
+      "\"Meters\""]},
+    "Quantity"]}],
+  SequenceForm[
+  "\[Tau] = \!\(\*FractionBox[\(\*SuperscriptBox[\(e\), \(2\)] \
+\*SubscriptBox[\(\[Mu]\), \(o\)]\), \(4  \[Pi]\)]\) = ", 
+   Quantity[
+    Rational[1, 389564355265760392822191102998547005440000000], "Coulombs"^2 
+    "Henries"/"Meters"]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.9400920874326553`*^9, 3.9400941178214245`*^9},
+ CellLabel->
+  "During evaluation of \
+In[141]:=",ExpressionUUID->"3085a7ef-c9b4-5d46-bac2-99f77fc8d96a"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\[Tau] = ",
+ Cell[BoxData[
+  TemplateBox[{
+    FractionBox["1", "389564355265760392822191102998547005440000000"], 
+    RowBox[{
+      SuperscriptBox["\"C\"", "2"], "\[InvisibleSpace]", "\"H\"", 
+      "\[InvisibleSpace]", "\"/\"", "\[InvisibleSpace]", "\"m\""}], 
+    "coulomb squared henries per meter", 
+    FractionBox[
+     RowBox[{
+       SuperscriptBox["\"Coulombs\"", "2"], " ", "\"Henries\""}], 
+     "\"Meters\""]},
+   "Quantity"]],
+  CellGroupingRules->{"GroupTogetherGrouping", 10000.},
+  CellChangeTimes->{
+   3.9400856692996807`*^9, {3.940090835734049*^9, 3.9400908360874825`*^9}, {
+    3.9400915788454056`*^9, 3.9400915830848427`*^9}, 3.940091835322668*^9, {
+    3.940091960811569*^9, 3.940091967695591*^9}},ExpressionUUID->
+  "546d99ae-e271-fc4c-8e9c-ca6c5072ced0"]
+}], "Equation",
+ CellChangeTimes->{{3.94009198396389*^9, 
+  3.940091994552582*^9}},ExpressionUUID->"a735b425-6e4b-6041-849f-\
+81c26d42104d"]
+},
+WindowSize->{718.5, 735},
+WindowMargins->{{-1445.25, Automatic}, {-2.25, Automatic}},
+CellContext->Notebook,
+Magnification:>1.3 Inherited,
+FrontEndVersion->"14.1 for Microsoft Windows (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b4553d54-e662-294a-aa95-7dd828f0baa0"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 312, 5, 44, "Text",ExpressionUUID->"0c6e24ad-13cd-f04a-883a-2a16e3c50066",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[891, 29, 5253, 149, 901, "Code",ExpressionUUID->"bd3b1e8b-3bbe-fd4b-bab2-e5a00481dc72",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[6147, 180, 808, 18, 68, "Output",ExpressionUUID->"c5e3b697-bbd2-cb40-b1bd-0b773fd564af",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[6958, 200, 509, 10, 48, "Output",ExpressionUUID->"724da3d8-d967-074a-bb2e-68a06d067110",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}],
+Cell[7470, 212, 481, 9, 44, "Output",ExpressionUUID->"05cc9bbf-260c-1941-ae4a-dc68513dd500",
+ CellGroupingRules->{"GroupTogetherGrouping", 10000.}]
+}, Open  ]],
+Cell[7966, 224, 1329, 25, 37, "Print",ExpressionUUID->"81d3f31a-137d-d641-93c0-f2d805ba9023"],
+Cell[CellGroupData[{
+Cell[9320, 253, 869, 20, 165, "Input",ExpressionUUID->"34f6c6e4-54a4-ec49-9b5d-489e1da0be78"],
+Cell[10192, 275, 673, 14, 51, "Output",ExpressionUUID->"da6a9b2f-d84f-9748-9af5-2df96a24e3a8"],
+Cell[10868, 291, 1102, 26, 55, "Print",ExpressionUUID->"3085a7ef-c9b4-5d46-bac2-99f77fc8d96a"]
+}, Open  ]],
+Cell[11985, 320, 939, 23, 45, "Equation",ExpressionUUID->"a735b425-6e4b-6041-849f-81c26d42104d"]
+}
+]
+*)
+
